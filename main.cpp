@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
     Graph myComputation;
     myComputation.readGraph(argv[1]);
-    cout<<"outta here"<<endl;
+    //cout<<"outta here"<<endl;
     ifstream infile(argv[2]);
     string line;
     getline(infile,line);

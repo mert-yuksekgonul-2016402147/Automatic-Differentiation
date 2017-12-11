@@ -54,7 +54,7 @@ int Graph::getVariable(string inp){
             res = id[inp];
         }
     }
-     printf("%s -> %d\n",inp.c_str(), res);
+     //printf("%s -> %d\n",inp.c_str(), res);
     return res;
 }
 
@@ -63,7 +63,7 @@ int Graph::getFunction(string fnc){
     name[idCount] = fnc;
     type[idCount] = FUNCTION;
     Function *f;
-     cout << "new Function: " << fnc << endl;
+     //cout << "new Function: " << fnc << endl;
     if(fnc.compare("mult")==0)
         f = new Multiplication(idCount, fnc);
     else if(fnc.compare("add")==0)
@@ -248,8 +248,8 @@ vector<double> Graph::backwardPass(double output){
     for(int i=0;i<inputNodes.size();i++) {
         //cout<<"Name is : "<<name[inputNodes[i]]<<" ";
         res[i] = vars[inputNodes[i]]->derivative;
-        cout<<res[i]<<" ";
+        //cout<<res[i]<<" ";
     }
-    cout<<endl;
+    //cout<<endl;
     return res;
 };
