@@ -39,33 +39,40 @@ int main(int argc, char* argv[]) {
     ofstream myfile,myfile2;
     myfile.open(argv[3]);
     myfile2.open(argv[4]);
-    for(int i=0;i<myComputation.inputNodes.size();i++){
-        int id = myComputation.inputNodes[i];
-        myfile2<<"d"<<myComputation.name[myComputation.outputNode];
-        myfile2<<"/d"<<myComputation.name[id]<<" ";
-    }
-    myfile2<<endl;
-    myfile<<myComputation.name[myComputation.outputNode]<<endl;
-    getline(infile,line);
 
-    while(line!=""){
-        vector<string>words;
-        split1(line,words);
-        vector<double>inputs(ids.size()+1);
-        for(int i=0;i<ids.size();i++){
-            inputs[ids[i]]=stod(words[i]);
-        }
-        double out = myComputation.forwardPass(inputs);
-        myfile<<out<<endl;
-        vector<double>ans = myComputation.backwardPass(out);
-        for(int i=0;i<myComputation.inputNodes.size();i++){
-            myfile2<<ans[i]<<" ";
-        }
-        myfile2<<endl;
-        getline(infile,line);
+    if(myComputation.isCyclic) {
+        myfile << "ERROR: COMPUTATION GRAPH HAS CYCLE!" << endl;
+        myfile2 << "ERROR: COMPUTATION GRAPH HAS CYCLE!" << endl;
+
     }
-    myfile.close();
-    myfile2.close();
+    else {
+        for (int i = 0; i < myComputation.inputNodes.size(); i++) {
+            int id = myComputation.inputNodes[i];
+            myfile2 << "d" << myComputation.name[myComputation.outputNode];
+            myfile2 << "/d" << myComputation.name[id] << " ";
+        }
+        myfile2 << endl;
+        myfile << myComputation.name[myComputation.outputNode] << endl;
+        getline(infile, line);
+
+        while (line != "") {
+            vector<string> words;
+            split1(line, words);
+            vector<double> inputs(ids.size() + 1);
+            for (int i = 0; i < ids.size(); i++) {
+                inputs[ids[i]] = stod(words[i]);
+            }
+            double out = myComputation.forwardPass(inputs);
+            myfile << out << endl;
+            vector<double> ans = myComputation.backwardPass(out);
+            for (int i = 0; i < myComputation.inputNodes.size(); i++) {
+                myfile2 << ans[i] << " ";
+            }
+            myfile2 << endl;
+            getline(infile, line);
+        }}
+        myfile.close();
+        myfile2.close();
 
 
 

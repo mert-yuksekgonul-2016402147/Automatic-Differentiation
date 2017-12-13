@@ -71,7 +71,7 @@ public:
     void readGraph(string filename);
 
     // checks whether the graph is cyclic or not.
-    bool isCyclic();
+    bool isCyclic= false;
 
     // performs forward pass for the graph and returns the output value.
     double forwardPass(vector<double> inputValues);

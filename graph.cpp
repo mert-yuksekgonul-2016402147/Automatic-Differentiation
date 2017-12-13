@@ -217,9 +217,14 @@ void Graph::initTopologicalOrder(queue<Node *> &q, vector<int> &incSizes){
 
 
     }
-}
+    for(int i=0;i<incSizes.size();i++){
+      if(incSizes[i]!=0) {
+          isCyclic = true;
+          break;
+      }
+    }
 
-bool Graph::isCyclic(){
+
 }
 
 double Graph::forwardPass(vector<double> inputValues){
