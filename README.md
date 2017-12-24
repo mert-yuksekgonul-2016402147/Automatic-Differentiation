@@ -1,7 +1,5 @@
 ## Automatic Differentiation
 
-This was one of my projects for Data Structures and Algorithms course in Boğaziçi University.
-
 Please check out Project4.pdf for description of the project.
 
 ## Implementation Details 
