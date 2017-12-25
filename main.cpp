@@ -4,6 +4,7 @@
 #include <iterator>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 template <class Container>
@@ -63,10 +64,10 @@ int main(int argc, char* argv[]) {
                 inputs[ids[i]] = stod(words[i]);
             }
             double out = myComputation.forwardPass(inputs);
-            myfile << out << endl;
+            myfile << setprecision(30)<< out << endl;
             vector<double> ans = myComputation.backwardPass(out);
             for (int i = 0; i < myComputation.inputNodes.size(); i++) {
-                myfile2 << ans[i] << " ";
+                myfile2 << setprecision(30)<<ans[i] << " ";
             }
             myfile2 << endl;
             getline(infile, line);
